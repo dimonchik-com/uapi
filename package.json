@@ -1,6 +1,6 @@
 {
   "name": "uapi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Module to work api.ucoz.net",
   "main": "index.js",
   "dependencies": {
