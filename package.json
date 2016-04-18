@@ -1,0 +1,30 @@
+{
+  "name": "uapi",
+  "version": "1.0.0",
+  "description": "Module to work api.ucoz.net",
+  "main": "index.js",
+  "dependencies": {
+    "MD5": "^1.3.0",
+    "querystring": "^0.2.0",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimonchik-com/uapi.git"
+  },
+  "keywords": [
+    "api",
+    "ucoz",
+    "api.ucoz.net"
+  ],
+  "author": "Dmitriy Kupriynov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimonchik-com/uapi/issues"
+  },
+  "homepage": "https://github.com/dimonchik-com/uapi#readme"
+}
