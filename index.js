@@ -21,7 +21,11 @@ uAPI.prototype.get = function (url, data, callback) {
     var queryString = querystring.stringify(array_data);
     request.get({url:this.confif.site_name+url+"?"+queryString}, function optionalCallback(err, httpResponse, body) {
         if (!err) {
-            callback(null,JSON.parse(body));
+            try {
+                callback(null,JSON.parse(body));
+            } catch (e) {
+                console.log(body);
+            }
         } else {
             callback(err);
         }
@@ -39,7 +43,11 @@ uAPI.prototype.post = function (url, data, callback) {
 
     request.post({url:this.confif.site_name+url, formData: array_data}, function optionalCallback(err, httpResponse, body) {
         if (!err) {
-            callback(null,JSON.parse(body));
+            try {
+                callback(null,JSON.parse(body));
+            } catch (e) {
+                console.log(body);
+            }
         } else {
             callback(err);
         }
@@ -57,7 +65,11 @@ uAPI.prototype.put = function (url, data, callback) {
 
     request.put({url:this.confif.site_name+url, formData: array_data}, function optionalCallback(err, httpResponse, body) {
         if (!err) {
-            callback(null,JSON.parse(body));
+            try {
+                callback(null,JSON.parse(body));
+            } catch (e) {
+                console.log(body);
+            }
         } else {
             callback(err);
         }
@@ -75,7 +87,11 @@ uAPI.prototype.delete = function (url, data, callback) {
 
     request.del({url:this.confif.site_name+url, formData: array_data}, function optionalCallback(err, httpResponse, body) {
         if (!err) {
-            callback(null,JSON.parse(body));
+            try {
+                callback(null,JSON.parse(body));
+            } catch (e) {
+                console.log(body);
+            }
         } else {
             callback(err);
         }
