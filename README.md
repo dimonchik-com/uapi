@@ -44,7 +44,6 @@ request.post('/photo', {
     }
 });
 
-
 request.put('/blog', {
     'id' : '19',
     'title' : 'Название материала',
