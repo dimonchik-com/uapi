@@ -15,5 +15,3 @@ request.get('/blog', {'date' : '2016-04-15'}, function(err, result) {
         console.log(err);
     }
 });
-
-

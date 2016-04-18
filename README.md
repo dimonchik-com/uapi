@@ -12,7 +12,7 @@ var request = new uAPI.uAPI({
     'oauth_consumer_secret' : 'B.1bRY8.uiRGoMSvfGdCYzfAJfZY7W',
     'oauth_token' : 'PW.Ay5vi03jMTFoPcUnZ2M2IGV.U8KrmoazkjFyA',
     'oauth_token_secret' : 'cT2Tyq9Ixxgwk7o4mmewKSTXYwwU48W.p0Qzd7PO',
-    'site_name' : 'http://dimonchikone.ucoz.net/uapi/'
+    'site_name' : 'siteurl'
 });
 
 request.get('/blog', {'date' : '2016-04-15'}, function(err, result){

@@ -83,7 +83,6 @@ uAPI.prototype.delete = function (url, data, callback) {
 }
 
 uAPI.prototype.getSignature=function(url, method, send_data) {
-
     var params={
         'oauth_version':'1.0',
         'oauth_timestamp': Math.round(new Date().getTime()/1000),
@@ -92,17 +91,6 @@ uAPI.prototype.getSignature=function(url, method, send_data) {
         'oauth_consumer_key' : this.confif.oauth_consumer_key,
         'oauth_token' : this.confif.oauth_token
     }
-
-    /*
-        var params={
-            'oauth_version':'1.0',
-            'oauth_timestamp': 1460966225,
-            'oauth_nonce' : md5(new String("150")),
-            'oauth_signature_method' : 'HMAC-SHA1',
-            'oauth_consumer_key' : this.confif.oauth_consumer_key,
-            'oauth_token' : this.confif.oauth_token
-        }
-    */
 
     params = this.collect_object(params, send_data);
 
