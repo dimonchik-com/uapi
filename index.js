@@ -1,6 +1,8 @@
 var querystring = require('querystring');
 var md5 = require('md5');
 var request= require('request');
+var path=require('path');
+var fs = require('fs');
 
 var uAPI = function (params) {
     if(params.site_name.substr(params.site_name.length-1)=="/") {
@@ -24,7 +26,7 @@ uAPI.prototype.get = function (url, data, callback) {
             try {
                 callback(null,JSON.parse(body));
             } catch (e) {
-                console.log(body);
+                return body;
             }
         } else {
             callback(err);
@@ -39,6 +41,12 @@ uAPI.prototype.post = function (url, data, callback) {
         callback=data;
     }
 
+    for(var i in data) {
+        if((/\.(gif|jpg|jpeg|tiff|png)$/i).test(data[i])) {
+            data[i]=fs.createReadStream(data[i]);
+        }
+    }
+
     var array_data=this.getSignature(url, method, data);
 
     request.post({url:this.confif.site_name+url, formData: array_data}, function optionalCallback(err, httpResponse, body) {
@@ -46,7 +54,7 @@ uAPI.prototype.post = function (url, data, callback) {
             try {
                 callback(null,JSON.parse(body));
             } catch (e) {
-                console.log(body);
+                return body;
             }
         } else {
             callback(err);
@@ -61,6 +69,12 @@ uAPI.prototype.put = function (url, data, callback) {
         callback=data;
     }
 
+    for(var i in data) {
+        if((/\.(gif|jpg|jpeg|tiff|png)$/i).test(data[i])) {
+            data[i]=fs.createReadStream(data[i]);
+        }
+    }
+
     var array_data=this.getSignature(url, method, data);
 
     request.put({url:this.confif.site_name+url, formData: array_data}, function optionalCallback(err, httpResponse, body) {
@@ -68,7 +82,7 @@ uAPI.prototype.put = function (url, data, callback) {
             try {
                 callback(null,JSON.parse(body));
             } catch (e) {
-                console.log(body);
+                return body;
             }
         } else {
             callback(err);
@@ -90,7 +104,7 @@ uAPI.prototype.delete = function (url, data, callback) {
             try {
                 callback(null,JSON.parse(body));
             } catch (e) {
-                console.log(body);
+                return body;
             }
         } else {
             callback(err);
@@ -111,6 +125,12 @@ uAPI.prototype.getSignature=function(url, method, send_data) {
     params = this.collect_object(params, send_data);
 
     var time_params=this.ksort(params); // сортируем массив
+
+    for (var i in time_params) {
+        if(typeof(time_params[i])=="object") {
+            time_params[i]=path.basename(time_params[i].path);
+        }
+    }
 
     var data = querystring.stringify(time_params);
 

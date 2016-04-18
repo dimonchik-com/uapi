@@ -1,10 +1,7 @@
 # uapi
 Module to work api.ucoz.net
 
-1. Go to [uCoz uAPI](http://api.ucoz.net/ru/)
-2. Get the following keys: Consumer key, Consumer secret, OAuth token, OAuth token secret.
-3. Make sure the checkbox "Enable uAPI module" in the module settings (in the Control Panel of the site).
-3. Use:
+Examples to use
 ```javascript
 var uAPI = require("uapi");
 var request = new uAPI.uAPI({
@@ -35,6 +32,18 @@ request.post('/blog', {
         console.log(err);
     }
 });
+
+request.post('/photo', {
+    'category' : '1',
+    'photo' :'/home/dmitriy/image2.jpg' // добавление картинок
+}, function(err, result) {
+    if (!err) {
+        console.log(result);
+    } else {
+        console.log(err);
+    }
+});
+
 
 request.put('/blog', {
     'id' : '19',
